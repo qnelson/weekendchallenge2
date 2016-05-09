@@ -14,21 +14,20 @@ $(document).ready(function () {
       url: "/data",
       success: function (data) {
           muArray = data.mu;
+          cycle();
           addIndex();
           getArray();
           showPosition();
         }
     });
 
+setInterval(autoNext, 5000);
     //Advance button functionality, carousel advances, displays new person,
     //updates index point
     $('.advance').on('click', function () {
         $(this).parent().parent().find('.person').empty();
         position++;
-        if (position > muArray.length - 1) {
-          position = 0;
-        }
-
+        cycle();
         getArray();
         showPosition();
 
@@ -37,11 +36,9 @@ $(document).ready(function () {
     //Retreat button functionality, carousel retreats, displays new person,
     //updates index point
     $('.previous').on('click', function () {
-
+        $(this).parent().parent().find('.person').empty();
         position--;
-        if (position < 0) {
-          position = muArray.length - 1;
-        }
+        cycle();
         getArray();
         showPosition();
       });
@@ -52,11 +49,11 @@ $(document).ready(function () {
     var $el = $('.person');
     var mcp = muArray[position];
 
-    $el.fadeOut("fast", function(){
+    $el.fadeOut(50, function(){
     $el.append('<h3>' + mcp.name + '</h3>');
     $el.append('<p>' + mcp.git_username + '</p>');
     $el.append('<p>' + mcp.shoutout + '</p>');
-    $el.fadeIn("fast");
+    $el.fadeIn(50);
     }
   )};
 
@@ -69,8 +66,25 @@ $(document).ready(function () {
 
    //Changes index point from black to white to show position
    function showPosition() {
-     $('.white').removeClass('white');
-     $('span:nth-of-type(' + (position + 1) + ')').addClass('white');
+     $('.selected').removeClass('selected');
+     $('span:nth-of-type(' + (position + 1) + ')').addClass('selected');
    }
 
+   function cycle() {
+     if (position < 0) {
+       position = muArray.length - 1;
+     }
+     else if (position > muArray.length - 1) {
+       position = 0;
+   }
+ }
+
+   function autoNext(){
+     $('.person').empty();
+     position++;
+     cycle();
+     getArray();
+     showPosition();
+
+   }
 });

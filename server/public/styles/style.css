@@ -1,6 +1,7 @@
 body {
   font-family: sans-serif;
   background-color: #1da194;
+
 }
 
 h2 {
@@ -9,10 +10,9 @@ h2 {
 }
 
 .person {
+  overflow: hidden;
   height: 150px;
-  width: 25%;
   margin: auto;
-  border: 1px dashed black;
   padding: 20px;
   text-align: center;
   border-radius: 10px
@@ -31,7 +31,14 @@ h2 {
   font-size: 40px;
 }
 
-.white {
+.selected {
 color: white;
 
+}
+
+.personbox {
+
+  width: 25%;
+  margin: auto;
+  border: 1px dashed black;
 }
