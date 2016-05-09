@@ -1,0 +1,37 @@
+body {
+  font-family: sans-serif;
+  background-color: #1da194;
+}
+
+h2 {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.person {
+  height: 150px;
+  width: 25%;
+  margin: auto;
+  border: 1px dashed black;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px
+}
+
+.btn-container {
+  width: 10%;
+  display: block;
+  margin: auto;
+  padding: 10px;
+}
+
+.index {
+  width: 18%;
+  margin: auto;
+  font-size: 40px;
+}
+
+.white {
+color: white;
+
+}
