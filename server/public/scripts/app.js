@@ -14,6 +14,8 @@ $(document).ready(function () {
       url: "/data",
       success: function (data) {
           muArray = data.mu;
+
+          //Group of funtions that get called upon success message from server
           cycle();
           addIndex();
           getArray();
@@ -70,6 +72,7 @@ setInterval(autoNext, 5000);
      $('span:nth-of-type(' + (position + 1) + ')').addClass('selected');
    }
 
+   //This function creates the loop functionality in the carousel
    function cycle() {
      if (position < 0) {
        position = muArray.length - 1;
@@ -79,7 +82,8 @@ setInterval(autoNext, 5000);
    }
  }
 
-   function autoNext(){
+    //This function pairs with setInterval to create the auto advance functionality
+    function autoNext(){
      $('.person').empty();
      position++;
      cycle();
